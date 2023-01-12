@@ -34,6 +34,9 @@ USER user
 ENV HOME=/home/user
 RUN chmod 777 /home/user
 
+# Create data directory
+RUN sudo mkdir /data && sudo chown user:user /data
+
 # Install Mambaforge and Python 3.8.
 ENV CONDA_AUTO_UPDATE_CONDA=false
 ENV PATH=/home/user/mambaforge/bin:$PATH
