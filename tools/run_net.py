@@ -21,7 +21,7 @@ def main():
     for path_to_config in args.cfg_files:
         cfg = load_config(args, path_to_config)
         cfg = assert_and_infer_cfg(cfg)
-        cfg.NUM_GPUS = 1
+        # cfg.NUM_GPUS = 1
 
         # Perform training.
         if cfg.TRAIN.ENABLE:
