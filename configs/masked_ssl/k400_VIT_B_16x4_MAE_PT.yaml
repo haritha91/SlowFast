@@ -1,6 +1,6 @@
 TASK: ssl
 TRAIN:
-  ENABLE: False #True
+  ENABLE: True #True
   DATASET: kinetics
   BATCH_SIZE: 2 #64
   EVAL_PERIOD: 100000
