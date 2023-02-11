@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: cvfive
+  name: sfnone
 spec:
   # Don't restart the pod once it finishes
   restartPolicy: Never
   # PyTorch's multithreading requires hostIPC to be set to true
   hostIPC: true
   containers:
-  - name: cvfive
-    image: registry.dl.cs.latrobe.edu.au/haritha/cvfive
+  - name: sfnone
+    image: registry.dl.cs.latrobe.edu.au/haritha/sfnone
     # Always pull the latest version of your Docker image
     imagePullPolicy: Always
     # Request 1 GPU to be allocated for your task
