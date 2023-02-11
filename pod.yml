@@ -21,10 +21,10 @@ spec:
     "--cfg", "configs/masked_ssl/k400_VIT_B_16x4_FT.yaml"]    
     # Mount the netball data at location /data inside the container
     volumeMounts:
-    - mountPath: /data
+    - mountPath: /app/data
       name: data
       readOnly: False
-    - mountPath: /results
+    - mountPath: /app/results
       name: results
       readOnly: False
   volumes:
