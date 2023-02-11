@@ -40,7 +40,6 @@ RUN sudo mkdir /app/data && sudo chown user:user /app/data
 # Create results directory
 RUN sudo mkdir /app/results && sudo chown user:user /app/results
 
-
 # Install Mambaforge and Python 3.8.
 ENV CONDA_AUTO_UPDATE_CONDA=false
 ENV PATH=/home/user/mambaforge/bin:$PATH
@@ -58,6 +57,10 @@ RUN mamba env update -n base -f environment.yml \
 # Install SlowFast project.
 COPY --chown=user:user . /app
 RUN python setup.py build develop --no-deps
+
+#set data & results accessible
+RUN chmod -R -f 777 /app/results
+RUN chmod -R -f 777 /app/data
 
 # # Set the default command to python3.
 # CMD ["python3"]

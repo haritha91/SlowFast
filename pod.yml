@@ -17,21 +17,8 @@ spec:
       limits:
         nvidia.com/gpu: 1
     # The command which starts your program in the container
-    args: ["python3", "train_pogars.py",
-    "--tag", "WCV5",
-    "--snippet_len", "25",
-    "--safe_zone", "30",
-    "--desc","b/CP - full dataset(cross validation) - affined tracks - fold 5",
-    "--loading_mode", "select_labels_teamWise",
-    "--weighted_sampling", "True",
-    "--model_type", "pogars_track_teamWise", 
-    "--bs","128",
-    "--num_epochs","20",
-    "--lr","0.001",
-    "--step_size","10",
-    "--w_loss","0",
-    "--num_classes","2", 
-    "--docker_run","1"]
+    args: ["python", "tools/run_net.py",
+    "--cfg", "configs/masked_ssl/k400_VIT_B_16x4_FT.yaml"]    
     # Mount the netball data at location /data inside the container
     volumeMounts:
     - mountPath: /data
@@ -44,11 +31,11 @@ spec:
   # Specify where to find the netball data on the host & where to store the results
   - name: data
     hostPath:
-      path: /nfs/users/haritha/datasets/PoseNetballNet
+      path: /nfs/users/haritha/datasets/Kinetics-Netball
       type: Directory
   - name: results
     hostPath:
-      path: /nfs/users/haritha/results/tempSeg
+      path: /nfs/users/haritha/results/slowfast-netball
       type: Directory
   # - name: test_results
   #   hostPath:
