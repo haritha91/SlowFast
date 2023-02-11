@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cvfive
+spec:
+  # Don't restart the pod once it finishes
+  restartPolicy: Never
+  # PyTorch's multithreading requires hostIPC to be set to true
+  hostIPC: true
+  containers:
+  - name: cvfive
+    image: registry.dl.cs.latrobe.edu.au/haritha/cvfive
+    # Always pull the latest version of your Docker image
+    imagePullPolicy: Always
+    # Request 1 GPU to be allocated for your task
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+    # The command which starts your program in the container
+    args: ["python3", "train_pogars.py",
+    "--tag", "WCV5",
+    "--snippet_len", "25",
+    "--safe_zone", "30",
+    "--desc","b/CP - full dataset(cross validation) - affined tracks - fold 5",
+    "--loading_mode", "select_labels_teamWise",
+    "--weighted_sampling", "True",
+    "--model_type", "pogars_track_teamWise", 
+    "--bs","128",
+    "--num_epochs","20",
+    "--lr","0.001",
+    "--step_size","10",
+    "--w_loss","0",
+    "--num_classes","2", 
+    "--docker_run","1"]
+    # Mount the netball data at location /data inside the container
+    volumeMounts:
+    - mountPath: /data
+      name: data
+      readOnly: False
+    - mountPath: /results
+      name: results
+      readOnly: False
+  volumes:
+  # Specify where to find the netball data on the host & where to store the results
+  - name: data
+    hostPath:
+      path: /nfs/users/haritha/datasets/PoseNetballNet
+      type: Directory
+  - name: results
+    hostPath:
+      path: /nfs/users/haritha/results/tempSeg
+      type: Directory
+  # - name: test_results
+  #   hostPath:
+  #     path: /nfs/users/haritha/datasets/volleyball/test_results
+  #     type: Directory
