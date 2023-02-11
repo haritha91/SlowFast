@@ -18,7 +18,7 @@ spec:
         nvidia.com/gpu: 2
     # The command which starts your program in the container
     args: ["python", "tools/run_net.py",
-    "--cfg", "configs/masked_ssl/k400_VIT_B_16x4_FT.yaml"]    
+    "--cfg", "configs/masked_ssl/k400_VIT_L_16x4_FT.yaml"]    
     # Mount the netball data at location /data inside the container
     volumeMounts:
     - mountPath: /app/data
