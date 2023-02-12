@@ -35,7 +35,7 @@ spec:
       type: Directory
   - name: results
     hostPath:
-      path: /nfs/users/haritha/results/slowfast-netball/kntone
+      path: /nfs/users/haritha/results/slowfast-kinetics/kntone
       type: Directory
   # - name: test_results
   #   hostPath:
