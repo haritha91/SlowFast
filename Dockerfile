@@ -59,5 +59,9 @@ RUN mamba env update -n base -f environment.yml \
 COPY --chown=user:user . /app
 RUN python setup.py build develop --no-deps
 
+#set data & results accessible
+RUN chmod -R -f 777 /app/results
+RUN chmod -R -f 777 /app/data
+
 # # Set the default command to python3.
 # CMD ["python3"]
