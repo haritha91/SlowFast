@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sfnthree
+spec:
+  # Don't restart the pod once it finishes
+  restartPolicy: Never
+  # PyTorch's multithreading requires hostIPC to be set to true
+  hostIPC: true
+  containers:
+  - name: sfnthree
+    image: registry.dl.cs.latrobe.edu.au/haritha/sfnthree
+    # Always pull the latest version of your Docker image
+    imagePullPolicy: Always
+    # Request 1 GPU to be allocated for your task
+    resources:
+      limits:
+        nvidia.com/gpu: 2
+    # The command which starts your program in the container
+    args: ["python", "tools/run_net.py",
+    "--cfg", "configs/masked_ssl/k400_VIT_L_16x4_FT.yaml"]    
+    # Mount the netball data at location /data inside the container
+    volumeMounts:
+    - mountPath: /app/data
+      name: data
+      readOnly: False
+    - mountPath: /app/results
+      name: results
+      readOnly: False
+  volumes:
+  # Specify where to find the netball data on the host & where to store the results
+  - name: data
+    hostPath:
+      path: /nfs/users/haritha/datasets/Kinetics-Netball
+      type: Directory
+  - name: results
+    hostPath:
+      path: /nfs/users/haritha/results/slowfast-netball/sfnthree
+      type: Directory
+  # - name: test_results
+  #   hostPath:
+  #     path: /nfs/users/haritha/datasets/volleyball/test_results
+  #     type: Directory
