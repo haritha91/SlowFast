@@ -89,10 +89,6 @@ TENSORBOARD:
   CONFUSION_MATRIX:
     ENABLE: True
     SUBSET_PATH: "data/kinetics_classnames.txt"
-  HISTOGRAM:
-    ENABLE: True
-    TOP_K: 10   # Top-k most frequently predicted classes for each class in the dataset.
-    SUBSET_PATH: "data/kinetics_classnames.txt"
 NUM_GPUS: 2 #8
 NUM_SHARDS: 1
 RNG_SEED: 0
