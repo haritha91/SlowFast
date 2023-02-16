@@ -1,12 +1,13 @@
 TASK: ssl
 TRAIN:
-  ENABLE: True #True
+  ENABLE: False #True
   DATASET: kinetics
   BATCH_SIZE: 2 #64
   EVAL_PERIOD: 100000
-  CHECKPOINT_PERIOD: 5
+  CHECKPOINT_PERIOD: 10
   AUTO_RESUME: True
   KILL_LOSS_EXPLOSION_FACTOR: 2.0 # default 0.0 (not enforced)
+  CHECKPOINT_FILE_PATH: "data/k400-pt-models/VIT_B_16x4_MAE_PT.pyth"
 DATA:
   USE_OFFSET_SAMPLING: True
   DECODING_BACKEND: pyav
@@ -73,13 +74,25 @@ MODEL:
   LOSS_FUNC: multi_mse
   DROPOUT_RATE: 0.0
 TEST:
-  ENABLE: False
+  ENABLE: True #False
   DATASET: kinetics
   BATCH_SIZE: 2 #64
   NUM_SPATIAL_CROPS: 1
+  CHECKPOINT_FILE_PATH: "data/k400-pt-models/VIT_B_16x4_MAE_PT.pyth"
 DATA_LOADER:
   NUM_WORKERS: 8
   PIN_MEMORY: True
+TENSORBOARD:
+  ENABLE: True
+  LOG_DIR: # Leave empty to use cfg.OUTPUT_DIR/runs-{cfg.TRAIN.DATASET} as path.
+  CLASS_NAMES_PATH: "data/kinetics_classnames.json"
+  CONFUSION_MATRIX:
+    ENABLE: True
+    SUBSET_PATH: "data/kinetics_classnames.txt"
+  HISTOGRAM:
+    ENABLE: True
+    TOP_K: 10   # Top-k most frequently predicted classes for each class in the dataset.
+    SUBSET_PATH: "data/kinetics_classnames.txt"
 NUM_GPUS: 2 #8
 NUM_SHARDS: 1
 RNG_SEED: 0
