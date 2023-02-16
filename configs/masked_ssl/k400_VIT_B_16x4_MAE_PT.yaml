@@ -84,7 +84,7 @@ DATA_LOADER:
   PIN_MEMORY: True
 TENSORBOARD:
   ENABLE: True
-  LOG_DIR: # Leave empty to use cfg.OUTPUT_DIR/runs-{cfg.TRAIN.DATASET} as path.
+  LOG_DIR: ""
   CLASS_NAMES_PATH: "data/kinetics_classnames.json"
   CONFUSION_MATRIX:
     ENABLE: True
