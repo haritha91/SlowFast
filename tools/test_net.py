@@ -122,6 +122,9 @@ def perform_test(test_loader, model, test_meter, cfg, writer=None):
         if cfg.NUM_GPUS > 1:
             preds, labels, video_idx = du.all_gather([preds, labels, video_idx])
         if cfg.NUM_GPUS:
+            print("preds - ",preds)
+            print("labels - ", labels)
+            print("video_idx - ", video_idx)
             preds = preds.cpu()
             labels = labels.cpu()
             video_idx = video_idx.cpu()
