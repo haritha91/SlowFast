@@ -140,7 +140,7 @@ def perform_test(test_loader, model, test_meter, cfg, writer=None):
 
             print("preds[1][0][0] shape - ",str(preds[1][0][0].shape))
 
-            preds = preds[1][0][1].cpu()
+            preds = preds.cpu()
             labels = labels.cpu()
             video_idx = video_idx.cpu()
 
