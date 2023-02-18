@@ -120,6 +120,7 @@ def perform_test(test_loader, model, test_meter, cfg, writer=None):
             preds = model(inputs)
             
         # Gather all the predictions across all the devices to perform ensemble.
+        #####
         if cfg.NUM_GPUS > 1:
             preds, labels, video_idx = du.all_gather([preds, labels, video_idx])
         if cfg.NUM_GPUS:
@@ -143,6 +144,8 @@ def perform_test(test_loader, model, test_meter, cfg, writer=None):
             preds = preds.cpu()
             labels = labels.cpu()
             video_idx = video_idx.cpu()
+
+        #######
 
         test_meter.iter_toc()
 
