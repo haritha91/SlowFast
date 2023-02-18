@@ -1,6 +1,6 @@
 TASK: ssl_eval
 TRAIN:
-  ENABLE: True
+  ENABLE: False #True
   DATASET: kinetics
   BATCH_SIZE: 1
   EVAL_PERIOD: 1
@@ -86,6 +86,13 @@ TEST:
 DATA_LOADER:
   NUM_WORKERS: 8
   PIN_MEMORY: True
+TENSORBOARD:
+  ENABLE: True
+  LOG_DIR: ""
+  CLASS_NAMES_PATH: "data/kinetics_classnames.json"
+  CONFUSION_MATRIX:
+    ENABLE: True
+    SUBSET_PATH: "data/kinetics_classnames.txt"
 NUM_GPUS: 1
 NUM_SHARDS: 1
 RNG_SEED: 0
