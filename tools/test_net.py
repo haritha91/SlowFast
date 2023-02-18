@@ -130,7 +130,7 @@ def perform_test(test_loader, model, test_meter, cfg, writer=None):
 
             res = list(map(type, preds[0]))
             print("preds[0] types - ",str(res))
-            print("preds[0] shape - ",str(preds[0].shape))
+            print("preds[0][0] shape - ",str(preds[0][0].shape))
 
             res = list(map(type, preds[1]))
             print("preds[1] types - ",str(res))
@@ -138,7 +138,9 @@ def perform_test(test_loader, model, test_meter, cfg, writer=None):
             res = list(map(type, preds[1][0]))
             print("preds[1][0] types - ",str(res))
 
-            preds = preds.cpu()
+            print("preds[1][0][0] shape - ",str(preds[1][0][0].shape))
+
+            preds = preds[1][0][1].cpu()
             labels = labels.cpu()
             video_idx = video_idx.cpu()
 
