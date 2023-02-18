@@ -124,22 +124,22 @@ def perform_test(test_loader, model, test_meter, cfg, writer=None):
         if cfg.NUM_GPUS > 1:
             preds, labels, video_idx = du.all_gather([preds, labels, video_idx])
         if cfg.NUM_GPUS:
-            print("preds - ",preds)
+            # print("preds - ",preds)
 
-            res = list(map(type, preds))
-            print("preds types - ",str(res))
+            # res = list(map(type, preds))
+            # print("preds types - ",str(res))
 
-            res = list(map(type, preds[0]))
-            print("preds[0] types - ",str(res))
-            print("preds[0][0] shape - ",str(preds[0][0].shape))
+            # res = list(map(type, preds[0]))
+            # print("preds[0] types - ",str(res))
+            # print("preds[0][0] shape - ",str(preds[0][0].shape))
 
-            res = list(map(type, preds[1]))
-            print("preds[1] types - ",str(res))
+            # res = list(map(type, preds[1]))
+            # print("preds[1] types - ",str(res))
 
-            res = list(map(type, preds[1][0]))
-            print("preds[1][0] types - ",str(res))
+            # res = list(map(type, preds[1][0]))
+            # print("preds[1][0] types - ",str(res))
 
-            print("preds[1][0][0] shape - ",str(preds[1][0][0].shape))
+            # print("preds[1][0][0] shape - ",str(preds[1][0][0].shape))
 
             preds = preds.cpu()
             labels = labels.cpu()
