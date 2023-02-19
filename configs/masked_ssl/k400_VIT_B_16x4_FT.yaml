@@ -94,7 +94,7 @@ TENSORBOARD:
   CONFUSION_MATRIX:
     ENABLE: True
     SUBSET_PATH: "data/netball_classnames.txt"
-NUM_GPUS: 4
+NUM_GPUS: 1
 NUM_SHARDS: 1
 RNG_SEED: 0
 OUTPUT_DIR: "results" #.

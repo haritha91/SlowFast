@@ -15,7 +15,7 @@ spec:
     # Request 1 GPU to be allocated for your task
     resources:
       limits:
-        nvidia.com/gpu: 2
+        nvidia.com/gpu: 1
     # The command which starts your program in the container
     args: ["python", "tools/run_net.py",
     "--cfg", "configs/masked_ssl/k400_VIT_B_16x4_FT.yaml"]    
