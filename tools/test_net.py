@@ -266,18 +266,33 @@ def test(cfg):
             view, test_meter.stats["top1_acc"]
         )
 
+        # # Accuracy for 5 classes 
+        # result_string = (
+        #     "_p{:.2f}_f{:.2f}_{}a{} Top5 Acc: {} MEM: {:.2f} f: {:.4f}"
+        #     "".format(
+        #         params / 1e6,
+        #         flops,
+        #         view,
+        #         test_meter.stats["top1_acc"],
+        #         test_meter.stats["top5_acc"],
+        #         misc.gpu_mem_usage(),
+        #         flops,
+        #     )
+        # )
+
+        # Accuracy for 2 classes 
         result_string = (
-            "_p{:.2f}_f{:.2f}_{}a{} Top5 Acc: {} MEM: {:.2f} f: {:.4f}"
+            "_p{:.2f}_f{:.2f}_{}a{} MEM: {:.2f} f: {:.4f}"
             "".format(
                 params / 1e6,
                 flops,
                 view,
                 test_meter.stats["top1_acc"],
-                test_meter.stats["top5_acc"],
                 misc.gpu_mem_usage(),
                 flops,
             )
         )
+
 
         logger.info("{}".format(result_string))
     logger.info("{}".format(result_string_views))

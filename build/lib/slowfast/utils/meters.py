@@ -84,9 +84,11 @@ class AVAMeter(object):
         self.output_dir = cfg.OUTPUT_DIR
 
         self.min_top1_err = 100.0
+        self.min_top2_err = 100.0
         self.min_top5_err = 100.0
         self.stats = {}
         self.stats["top1_acc"] = 100.0
+        self.stats["top2_acc"] = 100.0
         self.stats["top5_acc"] = 100.0
 
     def log_iter_stats(self, cur_epoch, cur_iter):
@@ -223,6 +225,7 @@ class AVAMeter(object):
 
         self.min_top1_err = self.full_map
         self.stats["top1_acc"] = map_str
+        self.stats["top2_acc"] = map_str
         self.stats["top5_acc"] = map_str
 
     def log_epoch_stats(self, cur_epoch):
@@ -403,6 +406,7 @@ class TestMeter(object):
             map_str = "{:.{prec}f}".format(mean_ap * 100.0, prec=2)
             self.stats["map"] = map_str
             self.stats["top1_acc"] = map_str
+            self.stats["top2_acc"] = map_str
             self.stats["top5_acc"] = map_str
         else:
             num_topks_correct = metrics.topks_correct(
