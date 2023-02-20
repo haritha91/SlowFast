@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-IMAGE="registry.dl.cs.latrobe.edu.au/haritha/netball-2class-cpshots-ft"
+IMAGE="registry.dl.cs.latrobe.edu.au/haritha/netball-2class-cpshots-ft-train"
 
 # 1. Build image
 docker build . -t "$IMAGE"
