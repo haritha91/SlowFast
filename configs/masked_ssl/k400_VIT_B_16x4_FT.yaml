@@ -1,6 +1,6 @@
 TASK: ssl_eval
 TRAIN:
-  ENABLE: False #true
+  ENABLE: True #true
   DATASET: kinetics
   BATCH_SIZE: 2
   EVAL_PERIOD: 1
@@ -83,7 +83,7 @@ TEST:
   BATCH_SIZE: 2 #64
   NUM_SPATIAL_CROPS: 3
   NUM_TEMPORAL_CLIPS: [5, 7, 10]
-  CHECKPOINT_FILE_PATH: "data/k400-pt-models/VIT_B_16x4_MAE_PT.pyth"
+  # CHECKPOINT_FILE_PATH: "data/k400-pt-models/VIT_B_16x4_MAE_PT.pyth"
 DATA_LOADER:
   NUM_WORKERS: 8
   PIN_MEMORY: True
