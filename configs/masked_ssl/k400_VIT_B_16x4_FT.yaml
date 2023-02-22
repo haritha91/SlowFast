@@ -80,7 +80,7 @@ MODEL:
 TEST:
   ENABLE: True
   DATASET: kinetics
-  BATCH_SIZE: 2 #64
+  BATCH_SIZE: 1 #64
   NUM_SPATIAL_CROPS: 3
   NUM_TEMPORAL_CLIPS: [5, 7, 10]
   CHECKPOINT_FILE_PATH: "data/k400-pt-models/VIT_B_16x4_MAE_PT.pyth"
@@ -93,7 +93,7 @@ TENSORBOARD:
   CLASS_NAMES_PATH: "data/kinetics_classnames.json"
   CONFUSION_MATRIX:
     ENABLE: True
-    SUBSET_PATH: "data/kinetics_classnames.txt"
+    SUBSET_PATH: "data/kinetics_classnames_subset_1.txt"
 NUM_GPUS: 1
 NUM_SHARDS: 1
 RNG_SEED: 0
