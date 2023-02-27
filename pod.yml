@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kinetics-test-l-1
+  name: kinetics-test-vitl-1
 spec:
   # Don't restart the pod once it finishes
   restartPolicy: Never
   # PyTorch's multithreading requires hostIPC to be set to true
   hostIPC: true
   containers:
-  - name: kinetics-test-l-1
-    image: registry.dl.cs.latrobe.edu.au/haritha/kinetics-test-l-1
+  - name: kinetics-test-vitl-1
+    image: registry.dl.cs.latrobe.edu.au/haritha/kinetics-test-vitl-1
     # Always pull the latest version of your Docker image
     imagePullPolicy: Always
     # Request 1 GPU to be allocated for your task
@@ -35,7 +35,7 @@ spec:
       type: Directory
   - name: results
     hostPath:
-      path: /nfs/users/haritha/results/slowfast-kinetics/kinetics-test-l-1
+      path: /nfs/users/haritha/results/slowfast-kinetics/kinetics-test-vitl-1
       type: Directory
   # - name: test_results
   #   hostPath:
